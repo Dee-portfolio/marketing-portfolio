@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Self-hosted fonts */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.375rem;
+
+    /* Brand colors as raw OKLCH L C H */
+    /* #F5F2EE warm off-white */
+    --background: 0.966 0.008 75;
+    /* #1A1A1A charcoal */
+    --foreground: 0.145 0 0;
+    /* card same as bg */
+    --card: 0.966 0.008 75;
+    --card-foreground: 0.145 0 0;
+    --popover: 0.966 0.008 75;
+    --popover-foreground: 0.145 0 0;
+    /* primary = charcoal */
+    --primary: 0.145 0 0;
+    --primary-foreground: 0.966 0.008 75;
+    /* secondary = light border */
+    --secondary: 0.895 0.012 75;
+    --secondary-foreground: 0.145 0 0;
+    /* muted = #777777 */
+    --muted: 0.92 0.006 75;
+    --muted-foreground: 0.52 0 0;
+    /* accent = #C8923A amber */
+    --accent: 0.65 0.13 57;
+    --accent-foreground: 0.145 0 0;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    /* border = #E3DDD2 */
+    --border: 0.895 0.012 75;
+    --input: 0.895 0.012 75;
+    --ring: 0.65 0.13 57;
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.145 0 0;
+    --sidebar-foreground: 0.966 0.008 75;
+    --sidebar-primary: 0.65 0.13 57;
+    --sidebar-primary-foreground: 0.145 0 0;
+    --sidebar-accent: 0.2 0 0;
+    --sidebar-accent-foreground: 0.966 0.008 75;
+    --sidebar-border: 0.25 0 0;
+    --sidebar-ring: 0.65 0.13 57;
+
+    /* Portfolio-specific custom vars */
+    --portfolio-bg: #f5f2ee;
+    --portfolio-text: #1a1a1a;
+    --portfolio-accent: #c8923a;
+    --portfolio-muted: #777777;
+    --portfolio-border: #e3ddd2;
+    --portfolio-dark: #1a1a1a;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "DM Sans", system-ui, sans-serif;
+  }
+}
+
+/* Scroll fade-in animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children */
+.stagger-children > *:nth-child(1) {
+  transition-delay: 0ms;
+}
+.stagger-children > *:nth-child(2) {
+  transition-delay: 100ms;
+}
+.stagger-children > *:nth-child(3) {
+  transition-delay: 200ms;
+}
+.stagger-children > *:nth-child(4) {
+  transition-delay: 300ms;
+}
+.stagger-children > *:nth-child(5) {
+  transition-delay: 400ms;
+}
+.stagger-children > *:nth-child(6) {
+  transition-delay: 500ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
